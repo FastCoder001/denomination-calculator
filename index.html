@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💰 Online Denomination Calculator & Age Calculator - Free Currency Counter & Date Calculator</title>
+    <meta name="description" content="Free online denomination calculator and age calculator. Count currency notes, calculate exact age in years/months/days with live counter. Perfect for businesses, personal use, and age verification.">
+    <meta name="keywords" content="denomination calculator, currency counter, note counting tool, age calculator, date calculator, birthday calculator, cash calculator, money counter, currency denomination calculator, online age calculator">
+    <meta name="author" content="Denomination Calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://yoursite.com/denomination-calculator">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Free Online Denomination Calculator & Age Calculator - Currency Counter & Date Calculator">
+    <meta property="og:description" content="Calculate currency denominations and exact age instantly. Count notes, coins, and calculate age in years/months/days with live counter."
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yoursite.com/denomination-calculator">
+    <meta property="og:image" content="https://yoursite.com/calculator-preview.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Denomination Calculator & Age Calculator">
+    <meta name="twitter:description" content="Calculate currency denominations and exact age instantly with live counter."
+    <meta name="twitter:image" content="https://yoursite.com/calculator-preview.jpg">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Online Denomination Calculator & Age Calculator",
+      "description": "Free online tool to calculate currency denominations, count notes and coins, calculate exact age in years/months/days with live counter and detailed statistics.",
+      "url": "https://yoursite.com/denomination-age-calculator",
+      "applicationCategory": ["FinanceApplication", "UtilityApplication"],
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Calculate currency denominations",
+        "Count notes and coins",
+        "Calculate exact age",
+        "Live age counter with milliseconds",
+        "Total days alive calculator",
+        "Heartbeat counter",
+        "Mobile responsive design",
+        "Real-time calculations"
+      ],
+      "screenshot": "https://yoursite.com/calculator-screenshot.jpg"
+    }
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" as="style">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdn.tailwindcss.com">
+    
+    <style>
+        /* Remove spinner arrows from number inputs */
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+        
+        /* Custom gradient backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-gradient {
+            background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        /* Smooth animations */
+        .smooth-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Pulse animation for total */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(34, 197, 94, 0.4); }
+            50% { box-shadow: 0 0 30px rgba(34, 197, 94, 0.6); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+        
+        /* Unique symbol animations */
+        
+        /* Crown Animation - Royal Spin */
+        @keyframes crown-royal {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+            }
+            25% { 
+                transform: scale(1.4) rotate(90deg);
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+            }
+            50% { 
+                transform: scale(1.6) rotate(180deg);
+                filter: drop-shadow(0 0 25px rgba(255, 215, 0, 1));
+            }
+            75% { 
+                transform: scale(1.4) rotate(270deg);
+                filter: drop-shadow(0 0 20px rgba(255, 215, 0, 1));
+            }
+        }
+        
+        /* Ring Animation - Sparkle Pulse */
+        @keyframes ring-sparkle {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(255, 192, 203, 0.5));
+            }
+            20% { 
+                transform: scale(1.3);
+                filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.8)) drop-shadow(0 0 25px rgba(255, 255, 255, 0.6));
+            }
+            40% { 
+                transform: scale(1.1);
+                filter: drop-shadow(0 0 20px rgba(255, 20, 147, 1));
+            }
+            60% { 
+                transform: scale(1.5);
+                filter: drop-shadow(0 0 30px rgba(255, 20, 147, 1)) drop-shadow(0 0 40px rgba(255, 255, 255, 0.8));
+            }
+            80% { 
+                transform: scale(1.2);
+                filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.8));
+            }
+        }
+        
+        /* Motorcycle Animation - Speed Wobble */
+        @keyframes motorcycle-speed {
+            0%, 100% { 
+                transform: scale(1) translateX(0px);
+                filter: drop-shadow(0 0 5px rgba(255, 69, 0, 0.5));
+            }
+            10% { 
+                transform: scale(1.2) translateX(-3px);
+                filter: drop-shadow(0 0 15px rgba(255, 69, 0, 0.8));
+            }
+            20% { 
+                transform: scale(1.4) translateX(3px);
+                filter: drop-shadow(0 0 20px rgba(255, 69, 0, 1));
+            }
+            30% { 
+                transform: scale(1.3) translateX(-2px);
+                filter: drop-shadow(0 0 18px rgba(255, 69, 0, 0.9));
+            }
+            40% { 
+                transform: scale(1.5) translateX(2px);
+                filter: drop-shadow(0 0 25px rgba(255, 69, 0, 1));
+            }
+            50% { 
+                transform: scale(1.4) translateX(-1px);
+                filter: drop-shadow(0 0 22px rgba(255, 69, 0, 0.9));
+            }
+            60% { 
+                transform: scale(1.3) translateX(1px);
+                filter: drop-shadow(0 0 18px rgba(255, 69, 0, 0.8));
+            }
+        }
+        
+        /* Laptop Animation - Tech Flip */
+        @keyframes laptop-flip {
+            0%, 100% { 
+                transform: scale(1) rotateY(0deg);
+                filter: drop-shadow(0 0 5px rgba(0, 191, 255, 0.5));
+            }
+            25% { 
+                transform: scale(1.3) rotateY(90deg);
+                filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.8));
+            }
+            50% { 
+                transform: scale(1.5) rotateY(180deg);
+                filter: drop-shadow(0 0 25px rgba(0, 191, 255, 1));
+            }
+            75% { 
+                transform: scale(1.3) rotateY(270deg);
+                filter: drop-shadow(0 0 15px rgba(0, 191, 255, 0.8));
+            }
+        }
+        
+        /* Phone Animation - Vibrate */
+        @keyframes phone-vibrate {
+            0%, 100% { 
+                transform: scale(1) translateX(0px) translateY(0px);
+                filter: drop-shadow(0 0 5px rgba(50, 205, 50, 0.5));
+            }
+            10% { 
+                transform: scale(1.2) translateX(-1px) translateY(1px);
+                filter: drop-shadow(0 0 12px rgba(50, 205, 50, 0.7));
+            }
+            20% { 
+                transform: scale(1.3) translateX(1px) translateY(-1px);
+                filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8));
+            }
+            30% { 
+                transform: scale(1.4) translateX(-1px) translateY(1px);
+                filter: drop-shadow(0 0 18px rgba(50, 205, 50, 0.9));
+            }
+            40% { 
+                transform: scale(1.5) translateX(1px) translateY(-1px);
+                filter: drop-shadow(0 0 20px rgba(50, 205, 50, 1));
+            }
+            50% { 
+                transform: scale(1.4) translateX(-1px) translateY(1px);
+                filter: drop-shadow(0 0 18px rgba(50, 205, 50, 0.9));
+            }
+            60% { 
+                transform: scale(1.3) translateX(1px) translateY(-1px);
+                filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8));
+            }
+        }
+        
+        /* T-shirt Animation - Gentle Wave */
+        @keyframes tshirt-wave {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 5px rgba(135, 206, 235, 0.5));
+            }
+            25% { 
+                transform: scale(1.2) rotate(-10deg);
+                filter: drop-shadow(0 0 12px rgba(135, 206, 235, 0.7));
+            }
+            50% { 
+                transform: scale(1.4) rotate(0deg);
+                filter: drop-shadow(0 0 18px rgba(135, 206, 235, 0.9));
+            }
+            75% { 
+                transform: scale(1.2) rotate(10deg);
+                filter: drop-shadow(0 0 12px rgba(135, 206, 235, 0.7));
+            }
+        }
+        
+        /* Game Controller Animation - Gaming Bounce */
+        @keyframes controller-bounce {
+            0%, 100% { 
+                transform: scale(1) translateY(0px);
+                filter: drop-shadow(0 0 5px rgba(138, 43, 226, 0.5));
+            }
+            20% { 
+                transform: scale(1.2) translateY(-5px);
+                filter: drop-shadow(0 0 12px rgba(138, 43, 226, 0.7));
+            }
+            40% { 
+                transform: scale(1.4) translateY(-10px);
+                filter: drop-shadow(0 0 18px rgba(138, 43, 226, 0.9));
+            }
+            60% { 
+                transform: scale(1.3) translateY(-5px);
+                filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.8));
+            }
+            80% { 
+                transform: scale(1.1) translateY(-2px);
+                filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.6));
+            }
+        }
+        
+        /* Pizza Animation - Tasty Wiggle */
+        @keyframes pizza-wiggle {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 5px rgba(255, 140, 0, 0.5));
+            }
+            15% { 
+                transform: scale(1.1) rotate(-5deg);
+                filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.6));
+            }
+            30% { 
+                transform: scale(1.3) rotate(5deg);
+                filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.8));
+            }
+            45% { 
+                transform: scale(1.4) rotate(-3deg);
+                filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.9));
+            }
+            60% { 
+                transform: scale(1.3) rotate(3deg);
+                filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.8));
+            }
+            75% { 
+                transform: scale(1.1) rotate(-2deg);
+                filter: drop-shadow(0 0 10px rgba(255, 140, 0, 0.6));
+            }
+        }
+        
+        /* Cookie Animation - Sweet Bounce */
+        @keyframes cookie-bounce {
+            0%, 100% { 
+                transform: scale(1);
+                filter: drop-shadow(0 0 5px rgba(210, 180, 140, 0.5));
+            }
+            30% { 
+                transform: scale(1.3);
+                filter: drop-shadow(0 0 12px rgba(210, 180, 140, 0.7));
+            }
+            50% { 
+                transform: scale(1.5);
+                filter: drop-shadow(0 0 18px rgba(210, 180, 140, 0.9));
+            }
+            70% { 
+                transform: scale(1.2);
+                filter: drop-shadow(0 0 12px rgba(210, 180, 140, 0.7));
+            }
+        }
+        
+        /* Candy Animation - Playful Spin */
+        @keyframes candy-spin {
+            0%, 100% { 
+                transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 0 5px rgba(255, 20, 147, 0.4));
+            }
+            20% { 
+                transform: scale(1.2) rotate(72deg);
+                filter: drop-shadow(0 0 10px rgba(255, 69, 0, 0.6));
+            }
+            40% { 
+                transform: scale(1.4) rotate(144deg);
+                filter: drop-shadow(0 0 15px rgba(50, 205, 50, 0.8));
+            }
+            60% { 
+                transform: scale(1.3) rotate(216deg);
+                filter: drop-shadow(0 0 12px rgba(0, 191, 255, 0.7));
+            }
+            80% { 
+                transform: scale(1.1) rotate(288deg);
+                filter: drop-shadow(0 0 8px rgba(138, 43, 226, 0.5));
+            }
+        }
+        
+        /* Animation classes for each symbol */
+        .crown-animate { animation: crown-royal 0.8s ease-in-out; }
+        .ring-animate { animation: ring-sparkle 0.7s ease-in-out; }
+        .motorcycle-animate { animation: motorcycle-speed 0.6s ease-in-out; }
+        .laptop-animate { animation: laptop-flip 0.8s ease-in-out; }
+        .phone-animate { animation: phone-vibrate 0.5s ease-in-out; }
+        .tshirt-animate { animation: tshirt-wave 0.7s ease-in-out; }
+        .controller-animate { animation: controller-bounce 0.6s ease-in-out; }
+        .pizza-animate { animation: pizza-wiggle 0.6s ease-in-out; }
+        .cookie-animate { animation: cookie-bounce 0.5s ease-in-out; }
+        .candy-animate { animation: candy-spin 0.8s ease-in-out; }
+
+
+
+        /* Calculator toggle button styles */
+        .active-calc-btn {
+            background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%) !important;
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(139, 92, 246, 0.4);
+        }
+        
+        /* Golden shiny button for age calculator */
+        .golden-shiny-btn {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffc107 50%, #ff8f00 75%, #ffd700 100%) !important;
+            background-size: 200% 200%;
+            animation: golden-shine 3s ease-in-out infinite;
+            box-shadow: 0 8px 32px rgba(255, 215, 0, 0.6), 
+                        0 0 20px rgba(255, 215, 0, 0.4),
+                        inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            border: 2px solid #ffd700;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .golden-shiny-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transform: rotate(45deg);
+            animation: golden-sweep 2s linear infinite;
+        }
+        
+        @keyframes golden-shine {
+            0%, 100% { 
+                background-position: 0% 50%;
+                box-shadow: 0 8px 32px rgba(255, 215, 0, 0.6), 
+                           0 0 20px rgba(255, 215, 0, 0.4),
+                           inset 0 2px 10px rgba(255, 255, 255, 0.3);
+            }
+            50% { 
+                background-position: 100% 50%;
+                box-shadow: 0 12px 40px rgba(255, 215, 0, 0.8), 
+                           0 0 30px rgba(255, 215, 0, 0.6),
+                           inset 0 2px 15px rgba(255, 255, 255, 0.5);
+            }
+        }
+        
+        @keyframes golden-sweep {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        /* Custom font */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body { font-family: 'Poppins', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen gradient-bg p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 id="mainTitle" class="text-4xl md:text-5xl font-bold text-white mb-4">
+                💰 Online Denomination Calculator - Free Currency Counter
+            </h1>
+            <p id="mainSubtitle" class="text-xl text-purple-100">Calculate cash denominations, count notes & coins instantly! 🚀</p>
+        </div>
+
+
+
+        <!-- Calculator -->
+        <div class="card-gradient rounded-2xl p-6 md:p-8 shadow-2xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                🧮 Currency Calculator
+            </h2>
+            
+            <!-- Denomination Table -->
+            <div class="space-y-3">
+                <!-- Header Row -->
+                <div class="grid grid-cols-3 gap-4 p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-white font-bold text-center">
+                    <div class="text-lg">💵 Denomination</div>
+                    <div class="text-lg">📊 Quantity</div>
+                    <div class="text-lg">💰 Total</div>
+                </div>
+
+                <!-- Denomination Rows -->
+                <div id="denominationRows"></div>
+            </div>
+
+            <!-- Grand Total -->
+            <div class="mt-8 p-6 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl text-white text-center pulse-glow">
+                <h3 class="text-2xl font-bold mb-2">🎉 Grand Total</h3>
+                <div id="grandTotal" class="text-4xl md:text-5xl font-bold">₹0</div>
+            </div>
+
+            <!-- Clear Button -->
+            <div class="mt-6 text-center">
+                <button onclick="clearAll()" 
+                        class="bg-gradient-to-r from-red-400 to-pink-500 hover:from-red-500 hover:to-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg smooth-transition hover:scale-105 transform">
+                    🗑️ Clear All
+                </button>
+            </div>
+        </div>
+
+        <!-- Fun Stats (for Denomination Calculator) -->
+        <div id="denomStats" class="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4 transition-all duration-500 ease-in-out">
+            <div class="card-gradient rounded-xl p-4 text-center shadow-lg">
+                <div class="text-2xl mb-2">📈</div>
+                <div class="font-bold text-gray-800">Total Notes</div>
+                <div id="totalNotes" class="text-2xl font-bold text-purple-600">0</div>
+            </div>
+            <div class="card-gradient rounded-xl p-4 text-center shadow-lg">
+                <div class="text-2xl mb-2">💎</div>
+                <div class="font-bold text-gray-800">Highest Value</div>
+                <div id="highestValue" class="text-2xl font-bold text-green-600">₹0</div>
+            </div>
+            <div class="card-gradient rounded-xl p-4 text-center shadow-lg">
+                <div class="text-2xl mb-2">⚖️</div>
+                <div class="font-bold text-gray-800">Average Value</div>
+                <div id="averageValue" class="text-2xl font-bold text-blue-600">₹0</div>
+            </div>
+        </div>
+
+        <!-- Age Calculator -->
+        <div id="ageCalculator" class="mt-6 card-gradient rounded-2xl p-6 md:p-8 shadow-2xl hidden transition-all duration-500 ease-in-out transform translate-y-4 opacity-0">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center flex items-center justify-center">
+                🍰 Age Calculator
+            </h2>
+            
+            <!-- Date Input -->
+            <div class="mb-8">
+                <label for="birthDate" class="block text-xl font-bold text-gray-700 mb-4 text-center">
+                    📅 Select Your Date of Birth
+                </label>
+                <div class="flex justify-center">
+                    <input type="date" 
+                           id="birthDate" 
+                           class="p-4 text-lg font-bold border-2 border-purple-300 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 smooth-transition text-center"
+                           onchange="calculateAge()">
+                </div>
+            </div>
+
+            <!-- Age Display -->
+            <div id="ageResult" class="hidden">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div class="bg-gradient-to-r from-red-100 to-pink-100 rounded-xl p-4 text-center">
+                        <div class="text-3xl mb-2">🎈</div>
+                        <div class="font-bold text-gray-800">Years</div>
+                        <div id="years" class="text-3xl font-bold text-red-600">0</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-xl p-4 text-center">
+                        <div class="text-3xl mb-2">📅</div>
+                        <div class="font-bold text-gray-800">Months</div>
+                        <div id="months" class="text-3xl font-bold text-blue-600">0</div>
+                    </div>
+                    <div class="bg-gradient-to-r from-green-100 to-teal-100 rounded-xl p-4 text-center">
+                        <div class="text-3xl mb-2">⭐</div>
+                        <div class="font-bold text-gray-800">Days</div>
+                        <div id="days" class="text-3xl font-bold text-green-600">0</div>
+                    </div>
+                </div>
+
+                <!-- Live Countdown -->
+                <div class="bg-gradient-to-r from-purple-400 to-pink-500 rounded-2xl p-6 text-white text-center">
+                    <h3 class="text-2xl font-bold mb-4">⏰ Live Age Counter</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center mb-4">
+                        <div class="bg-white bg-opacity-20 rounded-lg p-3">
+                            <div class="text-2xl font-bold" id="liveHours">0</div>
+                            <div class="text-xs">Hours</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-3">
+                            <div class="text-2xl font-bold" id="liveMinutes">0</div>
+                            <div class="text-xs">Minutes</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-3">
+                            <div class="text-2xl font-bold" id="liveSeconds">0</div>
+                            <div class="text-xs">Seconds</div>
+                        </div>
+                        <div class="bg-white bg-opacity-20 rounded-lg p-3">
+                            <div class="text-2xl font-bold" id="liveMilliseconds">0</div>
+                            <div class="text-xs">Milliseconds</div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-white bg-opacity-10 rounded-lg p-3">
+                            <div class="font-bold text-lg" id="totalDays">0</div>
+                            <div>Total Days Alive 🎂</div>
+                        </div>
+                        <div class="bg-white bg-opacity-10 rounded-lg p-3">
+                            <div class="font-bold text-lg" id="totalHeartbeats">0</div>
+                            <div>Estimated Heartbeats 💓</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calculator Toggle Buttons - Now at the bottom -->
+        <div class="mt-8 flex justify-center gap-4">
+            <button id="denomBtn" onclick="showDenominationCalculator()" 
+                    class="bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold py-3 px-6 rounded-full shadow-lg smooth-transition hover:scale-105 transform active-calc-btn">
+                💰 Denomination Calculator
+            </button>
+            <button id="ageBtn" onclick="showAgeCalculator()" 
+                    class="bg-gradient-to-r from-gray-400 to-gray-500 text-white font-bold py-3 px-6 rounded-full shadow-lg smooth-transition hover:scale-105 transform golden-shiny-btn">
+                🍰 Age Calculator
+            </button>
+        </div>
+
+        <!-- SEO Content Section -->
+        <div id="denomContent" class="mt-12 card-gradient rounded-2xl p-8 shadow-2xl">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                🏆 About Our Online Denomination Calculator
+            </h2>
+
+<section class="mt-6">
+  <h2 class="text-2xl font-bold text-gray-800 mb-3">
+    About This Calculator
+  </h2>
+
+  <p class="text-gray-700 leading-relaxed mb-4">
+    This Indian currency denomination calculator helps users quickly
+    calculate total cash value based on different currency notes.
+    It is useful for shopkeepers, bank employees, accountants,
+    and anyone who handles cash daily.
+  </p>
+
+  <p class="text-gray-700 leading-relaxed">
+    Enter the number of notes for each denomination and the calculator
+    will instantly show the total amount. This tool works on mobile
+    and desktop devices and is completely free to use.
+  </p>
+</section>
+
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-600 mb-4">💰 What is a Denomination Calculator?</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        A <strong>denomination calculator</strong> is a powerful online tool designed to help you count and calculate different currency denominations quickly and accurately. Our <strong>currency counter</strong> allows you to input the quantity of each note and coin denomination, automatically calculating the total value for each denomination and providing a comprehensive grand total.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Whether you're a business owner counting daily cash receipts, a bank teller processing transactions, or an individual organizing personal finances, our <strong>note counting tool</strong> simplifies the entire process with real-time calculations and detailed breakdowns.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">🚀 Key Features & Benefits</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Instant Calculations:</strong> Real-time updates as you enter quantities</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Multiple Denominations:</strong> Supports all Indian currency notes from ₹1 to ₹2000</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Detailed Statistics:</strong> View total notes, highest value, and average calculations</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Mobile Responsive:</strong> Works perfectly on all devices and screen sizes</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Free to Use:</strong> No registration or payment required</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Bonus Age Calculator:</strong> Additional tool for calculating exact age</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">🎯 Who Can Use This Currency Counter?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🏪</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Business Owners</h4>
+                        <p class="text-sm text-gray-600">Count daily sales, manage cash registers, and track revenue efficiently</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🏦</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Banking Professionals</h4>
+                        <p class="text-sm text-gray-600">Process transactions, count deposits, and manage cash operations</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">👥</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Personal Use</h4>
+                        <p class="text-sm text-gray-600">Organize savings, count pocket money, and manage personal finances</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">📱 How to Use the Denomination Calculator</h3>
+                <div class="bg-orange-50 rounded-lg p-6">
+                    <ol class="text-gray-700 space-y-3">
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span> <strong>Enter Quantities:</strong> Input the number of notes/coins for each denomination in the quantity field</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span> <strong>View Calculations:</strong> Watch as totals update automatically for each denomination</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span> <strong>Check Grand Total:</strong> See the complete sum of all denominations at the bottom</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span> <strong>Review Statistics:</strong> Analyze total notes, highest value, and average calculations</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">5</span> <strong>Clear & Restart:</strong> Use the clear button to reset all values and start fresh</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">🌟 Why Choose Our Online Cash Calculator?</h3>
+                <p class="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                    Our <strong>online denomination calculator</strong> stands out with its intuitive design, lightning-fast performance, and comprehensive features. Unlike basic calculators, we provide detailed statistics, animated interactions, and a bonus age calculator. The tool is completely free, requires no downloads, and works seamlessly across all devices. With support for all Indian currency denominations and real-time calculations, it's the perfect solution for anyone who needs to count money quickly and accurately.
+                </p>
+            </div>
+        </div>
+
+        <!-- Age Calculator SEO Content Section -->
+        <div id="ageContent" class="mt-12 card-gradient rounded-2xl p-8 shadow-2xl hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+                🍰 About Our Online Age Calculator
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                <div>
+                    <h3 class="text-2xl font-bold text-purple-600 mb-4">🎈 What is an Age Calculator?</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        An <strong>age calculator</strong> is a sophisticated online tool designed to calculate your exact age in years, months, and days with precision. Our <strong>date calculator</strong> goes beyond basic age calculation by providing real-time age counting, showing your age down to milliseconds, and calculating fascinating statistics like total days lived and estimated heartbeats.
+                    </p>
+                    <p class="text-gray-700 leading-relaxed">
+                        Whether you're planning a birthday celebration, calculating age for official documents, or simply curious about your exact age, our <strong>birthday calculator</strong> provides instant and accurate results with detailed breakdowns and live counters.
+                    </p>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-bold text-green-600 mb-4">⭐ Advanced Age Calculator Features</h3>
+                    <ul class="text-gray-700 space-y-2">
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Precise Calculations:</strong> Exact age in years, months, and days</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Live Age Counter:</strong> Real-time updates showing hours, minutes, seconds</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Total Days Alive:</strong> Complete count of days since birth</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Heartbeat Counter:</strong> Estimated total heartbeats based on average heart rate</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Millisecond Precision:</strong> Watch your age increase in real-time</li>
+                        <li class="flex items-start"><span class="text-green-500 mr-2">✓</span> <strong>Mobile Optimized:</strong> Perfect for all devices and screen sizes</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">🎯 Who Uses Our Date Calculator?</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-blue-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">👶</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Parents & Families</h4>
+                        <p class="text-sm text-gray-600">Track children's exact age, plan birthday celebrations, and monitor growth milestones</p>
+                    </div>
+                    <div class="bg-green-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">📋</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Official Documents</h4>
+                        <p class="text-sm text-gray-600">Calculate age for forms, applications, legal documents, and age verification</p>
+                    </div>
+                    <div class="bg-purple-50 rounded-lg p-4 text-center">
+                        <div class="text-3xl mb-2">🎉</div>
+                        <h4 class="font-bold text-gray-800 mb-2">Personal Interest</h4>
+                        <p class="text-sm text-gray-600">Discover fun facts about your age, plan milestone birthdays, and satisfy curiosity</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mb-8">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">📅 How to Use the Age Calculator</h3>
+                <div class="bg-orange-50 rounded-lg p-6">
+                    <ol class="text-gray-700 space-y-3">
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span> <strong>Select Birth Date:</strong> Click on the date picker and choose your date of birth</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span> <strong>View Age Breakdown:</strong> See your exact age in years, months, and days instantly</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span> <strong>Watch Live Counter:</strong> Observe real-time updates of hours, minutes, seconds, and milliseconds</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span> <strong>Explore Statistics:</strong> Discover total days alive and estimated heartbeats</li>
+                        <li class="flex items-start"><span class="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">5</span> <strong>Share Results:</strong> Use the calculated age for any purpose or share with friends</li>
+                    </ol>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">🌟 Why Our Age Calculator is the Best?</h3>
+                <p class="text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                    Our <strong>online age calculator</strong> combines accuracy with entertainment, providing not just your basic age but a comprehensive analysis of your time on Earth. The live counter feature makes it engaging and fun, while the precise calculations ensure accuracy for official use. With support for any date range and real-time updates, it's perfect for both practical applications and personal curiosity. The tool is completely free, works offline after loading, and provides results that are both informative and fascinating.
+                </p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-16 text-center text-white">
+            <div class="card-gradient rounded-2xl p-6 shadow-2xl">
+                <div class="pt-4 border-t border-gray-200">
+                    <p class="text-gray-600 text-sm">
+                        © 2024 Online Denomination Calculator & Age Calculator. Free tools for currency counting and age calculations.
+                    </p>
+                    <p class="text-gray-500 text-xs mt-2">
+                        Keywords: denomination calculator, currency counter, note counting tool, age calculator, date calculator
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        const denominations = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+        const denominationEmojis = ['👑', '💍', '🏍️', '💻', '📱', '👕', '🎮', '🍕', '🍪', '🍬'];
+        const rowColors = [
+            'bg-gradient-to-r from-purple-100 to-pink-100',
+            'bg-gradient-to-r from-blue-100 to-cyan-100',
+            'bg-gradient-to-r from-green-100 to-teal-100',
+            'bg-gradient-to-r from-yellow-100 to-orange-100',
+            'bg-gradient-to-r from-red-100 to-pink-100',
+            'bg-gradient-to-r from-indigo-100 to-purple-100',
+            'bg-gradient-to-r from-cyan-100 to-blue-100',
+            'bg-gradient-to-r from-teal-100 to-green-100',
+            'bg-gradient-to-r from-orange-100 to-red-100',
+            'bg-gradient-to-r from-pink-100 to-purple-100'
+        ];
+
+        function createDenominationRows() {
+            const container = document.getElementById('denominationRows');
+            container.innerHTML = '';
+
+            denominations.forEach((denom, index) => {
+                const row = document.createElement('div');
+                row.className = `grid grid-cols-3 gap-4 p-4 rounded-xl ${rowColors[index]} smooth-transition hover:scale-102 hover:shadow-lg`;
+                
+                row.innerHTML = `
+                    <div class="flex items-center justify-center font-bold text-gray-800 text-lg">
+                        <span id="symbol-${denom}" class="mr-2 text-2xl transition-all duration-300" role="img" aria-label="Currency symbol">${denominationEmojis[index]}</span>
+                        ₹${denom}
+                    </div>
+                    <div class="flex justify-center">
+                        <input type="number" 
+                               id="qty-${denom}" 
+                               class="w-full max-w-24 p-3 text-center font-bold text-lg border-2 border-gray-300 rounded-lg focus:border-purple-500 focus:ring-2 focus:ring-purple-200 smooth-transition" 
+                               placeholder="0" 
+                               min="0"
+                               onkeydown="handleEnterKey(event, ${index})"
+                               oninput="calculateTotal(); animateSymbol(${denom})"
+                               onchange="animateSymbol(${denom})"
+                               onclick="animateSymbol(${denom})">
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <span id="total-${denom}" class="font-bold text-lg text-gray-800">₹0</span>
+                    </div>
+                `;
+                
+                container.appendChild(row);
+            });
+        }
+
+        function handleEnterKey(event, currentIndex) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const nextIndex = currentIndex + 1;
+                if (nextIndex < denominations.length) {
+                    const nextInput = document.getElementById(`qty-${denominations[nextIndex]}`);
+                    nextInput.focus();
+                } else {
+                    event.target.blur();
+                }
+            }
+        }
+
+        function calculateTotal() {
+            let grandTotal = 0;
+            let totalNotes = 0;
+            let highestValue = 0;
+            let totalValue = 0;
+            let activeNotes = 0;
+
+            denominations.forEach(denom => {
+                const qtyInput = document.getElementById(`qty-${denom}`);
+                const totalSpan = document.getElementById(`total-${denom}`);
+                
+                const qty = parseInt(qtyInput.value) || 0;
+                const total = denom * qty;
+                
+                totalSpan.textContent = `₹${total.toLocaleString()}`;
+                grandTotal += total;
+                totalNotes += qty;
+                
+                if (qty > 0) {
+                    highestValue = Math.max(highestValue, total);
+                    totalValue += total;
+                    activeNotes++;
+                }
+            });
+
+            // Update grand total with animation
+            const grandTotalElement = document.getElementById('grandTotal');
+            grandTotalElement.textContent = `₹${grandTotal.toLocaleString()}`;
+            
+            // Update stats
+            document.getElementById('totalNotes').textContent = totalNotes.toLocaleString();
+            document.getElementById('highestValue').textContent = `₹${highestValue.toLocaleString()}`;
+            document.getElementById('averageValue').textContent = activeNotes > 0 ? `₹${Math.round(totalValue / activeNotes).toLocaleString()}` : '₹0';
+
+            // Add pulse effect when total changes
+            if (grandTotal > 0) {
+                grandTotalElement.parentElement.classList.add('pulse-glow');
+            } else {
+                grandTotalElement.parentElement.classList.remove('pulse-glow');
+            }
+        }
+
+        function animateSymbol(denomination) {
+            const symbolElement = document.getElementById(`symbol-${denomination}`);
+            if (symbolElement) {
+                // Map denominations to their unique animation classes
+                const animationMap = {
+                    2000: 'crown-animate',
+                    500: 'ring-animate',
+                    200: 'motorcycle-animate',
+                    100: 'laptop-animate',
+                    50: 'phone-animate',
+                    20: 'tshirt-animate',
+                    10: 'controller-animate',
+                    5: 'pizza-animate',
+                    2: 'cookie-animate',
+                    1: 'candy-animate'
+                };
+                
+                const animationClass = animationMap[denomination];
+                
+                // Remove existing animation class if present
+                symbolElement.classList.remove(animationClass);
+                
+                // Force reflow to restart animation
+                symbolElement.offsetHeight;
+                
+                // Add unique animation class
+                symbolElement.classList.add(animationClass);
+                
+                // Remove animation class after animation completes
+                const animationDurations = {
+                    2000: 800, 500: 700, 200: 600, 100: 800, 50: 500,
+                    20: 700, 10: 600, 5: 600, 2: 500, 1: 800
+                };
+                
+                setTimeout(() => {
+                    symbolElement.classList.remove(animationClass);
+                }, animationDurations[denomination]);
+            }
+        }
+
+        function clearAll() {
+            denominations.forEach(denom => {
+                document.getElementById(`qty-${denom}`).value = '';
+            });
+            calculateTotal();
+            
+            // Add a fun clear animation
+            const calculator = document.querySelector('.card-gradient');
+            calculator.style.transform = 'scale(0.98)';
+            setTimeout(() => {
+                calculator.style.transform = 'scale(1)';
+            }, 150);
+        }
+
+        // Auto-changing background colors
+        const backgroundGradients = [
+            'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+            'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)',
+            'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
+            'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)',
+            'linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)',
+            'linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)'
+        ];
+        
+        let currentGradientIndex = 0;
+        
+        function changeBackgroundAutomatically() {
+            document.body.style.background = backgroundGradients[currentGradientIndex];
+            document.body.style.transition = 'background 5s ease';
+            currentGradientIndex = (currentGradientIndex + 1) % backgroundGradients.length;
+        }
+        
+        // Start auto-changing background every 5 seconds
+        setInterval(changeBackgroundAutomatically, 5000);
+
+        // Calculator switching functions
+        let currentCalculator = 'denomination';
+        let ageInterval = null;
+
+        function showDenominationCalculator() {
+            if (currentCalculator === 'denomination') return;
+            
+            currentCalculator = 'denomination';
+            
+            // Update header text
+            document.getElementById('mainTitle').textContent = '💰 Online Denomination Calculator - Free Currency Counter';
+            document.getElementById('mainSubtitle').textContent = 'Calculate cash denominations, count notes & coins instantly! 🚀';
+            
+            // Update button states - Denomination button gets purple when active, Age button gets golden when inactive
+            document.getElementById('denomBtn').classList.add('active-calc-btn');
+            document.getElementById('denomBtn').classList.remove('bg-gradient-to-r', 'from-gray-400', 'to-gray-500', 'golden-shiny-btn');
+            document.getElementById('ageBtn').classList.remove('active-calc-btn');
+            document.getElementById('ageBtn').classList.add('golden-shiny-btn');
+            document.getElementById('ageBtn').classList.remove('bg-gradient-to-r', 'from-gray-400', 'to-gray-500');
+            
+            // Hide age calculator with animation
+            const ageCalc = document.getElementById('ageCalculator');
+            ageCalc.style.transform = 'translateY(20px)';
+            ageCalc.style.opacity = '0';
+            
+            setTimeout(() => {
+                ageCalc.classList.add('hidden');
+                
+                // Show denomination calculator
+                const denomCalc = document.querySelector('.card-gradient');
+                const denomStats = document.getElementById('denomStats');
+                
+                denomCalc.classList.remove('hidden');
+                denomStats.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    denomCalc.style.transform = 'translateY(0)';
+                    denomCalc.style.opacity = '1';
+                    denomStats.style.transform = 'translateY(0)';
+                    denomStats.style.opacity = '1';
+                }, 50);
+            }, 300);
+            
+            // Clear age interval
+            if (ageInterval) {
+                clearInterval(ageInterval);
+                ageInterval = null;
+            }
+            
+            // Show denomination content, hide age content
+            document.getElementById('denomContent').classList.remove('hidden');
+            document.getElementById('ageContent').classList.add('hidden');
+        }
+
+        function showAgeCalculator() {
+            if (currentCalculator === 'age') return;
+            
+            currentCalculator = 'age';
+            
+            // Update header text
+            document.getElementById('mainTitle').textContent = '📅 Online Age Calculator - Free Date Calculator';
+            document.getElementById('mainSubtitle').textContent = 'Calculate exact age in years, months & days with live counter! ⏰';
+            
+            // Update button states - Age button gets purple when active, Denomination button gets golden when inactive
+            document.getElementById('ageBtn').classList.add('active-calc-btn');
+            document.getElementById('ageBtn').classList.remove('bg-gradient-to-r', 'from-gray-400', 'to-gray-500', 'golden-shiny-btn');
+            document.getElementById('denomBtn').classList.remove('active-calc-btn');
+            document.getElementById('denomBtn').classList.add('golden-shiny-btn');
+            document.getElementById('denomBtn').classList.remove('bg-gradient-to-r', 'from-gray-400', 'to-gray-500');
+            
+            // Hide denomination calculator with animation
+            const denomCalc = document.querySelector('.card-gradient');
+            const denomStats = document.getElementById('denomStats');
+            
+            denomCalc.style.transform = 'translateY(-20px)';
+            denomCalc.style.opacity = '0';
+            denomStats.style.transform = 'translateY(-20px)';
+            denomStats.style.opacity = '0';
+            
+            setTimeout(() => {
+                denomCalc.classList.add('hidden');
+                denomStats.classList.add('hidden');
+                
+                // Show age calculator
+                const ageCalc = document.getElementById('ageCalculator');
+                ageCalc.classList.remove('hidden');
+                
+                setTimeout(() => {
+                    ageCalc.style.transform = 'translateY(0)';
+                    ageCalc.style.opacity = '1';
+                }, 50);
+            }, 300);
+            
+            // Show age content, hide denomination content
+            document.getElementById('ageContent').classList.remove('hidden');
+            document.getElementById('denomContent').classList.add('hidden');
+        }
+
+        function calculateAge() {
+            const birthDate = document.getElementById('birthDate').value;
+            if (!birthDate) return;
+            
+            const birth = new Date(birthDate);
+            const now = new Date();
+            
+            // Calculate age
+            let years = now.getFullYear() - birth.getFullYear();
+            let months = now.getMonth() - birth.getMonth();
+            let days = now.getDate() - birth.getDate();
+            
+            if (days < 0) {
+                months--;
+                days += new Date(now.getFullYear(), now.getMonth(), 0).getDate();
+            }
+            
+            if (months < 0) {
+                years--;
+                months += 12;
+            }
+            
+            // Update display
+            document.getElementById('years').textContent = years;
+            document.getElementById('months').textContent = months;
+            document.getElementById('days').textContent = days;
+            
+            // Calculate total days
+            const totalDays = Math.floor((now - birth) / (1000 * 60 * 60 * 24));
+            document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+            
+
+            
+            // Show result
+            document.getElementById('ageResult').classList.remove('hidden');
+            
+            // Start live counter
+            startLiveCounter(birth);
+        }
+
+
+
+        function startLiveCounter(birthDate) {
+            if (ageInterval) clearInterval(ageInterval);
+            
+            function updateCounter() {
+                const now = new Date();
+                const diff = now - birthDate;
+                
+                const totalSeconds = Math.floor(diff / 1000);
+                const hours = Math.floor((totalSeconds % (24 * 3600)) / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                const milliseconds = Math.floor((diff % 1000) / 10); // Show centiseconds for smoother animation
+                
+                // Calculate total days and heartbeats
+                const totalDays = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const avgHeartRate = 70; // Average heart rate per minute
+                const totalHeartbeats = Math.floor((diff / 1000 / 60) * avgHeartRate);
+                
+                // Update display with animations
+                document.getElementById('liveHours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('liveMinutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('liveSeconds').textContent = seconds.toString().padStart(2, '0');
+                document.getElementById('liveMilliseconds').textContent = milliseconds.toString().padStart(2, '0');
+                document.getElementById('totalDays').textContent = totalDays.toLocaleString();
+                document.getElementById('totalHeartbeats').textContent = totalHeartbeats.toLocaleString();
+            }
+            
+            // Update immediately
+            updateCounter();
+            
+            // Update every 100ms for smooth millisecond animation
+            ageInterval = setInterval(updateCounter, 100);
+        }
+
+        // Initialize the calculator
+        createDenominationRows();
+        calculateTotal();
+
+        // Add some fun interactions
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to input fields
+            const inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.parentElement.style.transform = 'scale(1.02)';
+                });
+                
+                input.addEventListener('blur', function() {
+                    this.parentElement.parentElement.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96be5e0e06c78a20',t:'MTc1NDY0OTMzMS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
